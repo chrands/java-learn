@@ -13,6 +13,7 @@ public class GuessNumberPro {
         int losetime = 0;
         System.out.println("game is on!");
 
+
         while(true){
             int count = 0;
             boolean isRight = false;
