@@ -6,7 +6,7 @@ public class GuessNumber {
 
         Random rand = new Random(); //创建随机数
         int target = rand.nextInt(100)+1; //生成随机数1-100，这里是0-99首尾分别+1
-        Scanner scanner  = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         System.out.println("game is on!");
 
@@ -15,7 +15,7 @@ public class GuessNumber {
 
         while (true) {
             System.out.println("print a number between 1 and 100:");
-            guess = scanner.nextInt(); //等待输入
+            guess = input.nextInt(); //等待输入
             count++;
 
             if (guess > target) {
@@ -27,7 +27,7 @@ public class GuessNumber {
                 break;
             }
         }
-        scanner.close();
+        input.close();
         System.out.println("game is over");
     }
 }
