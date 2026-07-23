@@ -2,46 +2,48 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class GuessNumberPro {
-    public static void  main(String[] args){
+    public static void  main(){
         Random rand = new Random();
         Scanner input = new Scanner(System.in);
-        int count = 0;
+
         int gameTime = 0;
-        int guess;
+//        int guess;
         String againGame;
-        boolean isRight = false;
         int wintime = 0;
         int losetime = 0;
+        System.out.println("game is on!");
 
         while(true){
-            System.out.println("game is on!\n");
+            int count = 0;
+            boolean isRight = false;
             gameTime ++;
+            int target = rand.nextInt(50)+1;
+            System.out.println("This is your "+gameTime+" times game,"+"[TEST]target:"+target+"\n print your guess num:");
 
             //游戏核心内容，判断大小逻辑
             while(count < 3){
-                int target = rand.nextInt(50)+1;
-                guess = input.nextInt();
+
+                count ++;
                 if(!input.hasNextInt()){
-                    System.out.println("input is not a number!\n");
+                    System.out.println("input is not a number! please try again");
                     input.next();
                     count --;
                     continue;
                 }
-                count ++;
-                System.out.println("This is your"+gameTime+"times game,"+"[TEST]target:"+target+"\n print your guess num:");
+                int guess = input.nextInt();  //先校验，在读取
                 if(guess == target){
-                    System.out.println("you are win!\n");
+                    System.out.println("["+gameTime+"]"+"you are win! do you again?(y/n)");
                     wintime++;
                     isRight = true;
                     break;
                 }else if(guess < target){
-                    System.out.println("low!\n");
+                    System.out.println("["+gameTime+"]"+"low!");
                 }else{
-                    System.out.println("high!\n");
+                    System.out.println("["+gameTime+"]"+"high!");
                 }
             }
             if (!isRight){
-                System.out.println("you are 3 times! do you want again? (y/n)\n");
+                System.out.println("["+gameTime+"]"+"you are try most times! you are lost! do you want again? (y/n)");
                 losetime++;
             }
             while(true){
@@ -52,7 +54,7 @@ public class GuessNumberPro {
                     System.out.println("gameTime:"+gameTime+",wintime:"+wintime+",losetime"+losetime);
                     return;
                 }else{
-                    System.out.println("wrong\n");
+                    System.out.println("mistake input ,please try again!");
                 }
             }
 
